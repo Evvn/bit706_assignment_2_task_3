@@ -10,17 +10,20 @@ namespace customer_app
         private int iD;
         private string firstName;
         private string lastName;
+        private bool isBankStaff;
 
         public Customer() // default constructor
         {
             iD = nextID;
+            isBankStaff = false; // default to false in case not specified
             nextID++;
         }
 
-        public Customer(string setFirstName, string setLastName) : this()  // with params
+        public Customer(string setFirstName, string setLastName, bool setIsBankStaff) : this()  // with params
         {
             firstName = setFirstName;
             lastName = setLastName;
+            isBankStaff = setIsBankStaff;
         }
 
         public int ID { get => iD; }
@@ -28,6 +31,8 @@ namespace customer_app
         public string FirstName { get => firstName; set => firstName = value; }
 
         public string LastName { get => lastName; set => lastName = value; }
+
+        public bool IsBankStaff { get => isBankStaff; set => isBankStaff = value; }
 
         public override string ToString()
         {

@@ -16,3 +16,4 @@ C:\Users\evan\Desktop\customer_app\customer_app\obj\Debug\netcoreapp3.1\customer
 C:\Users\evan\Desktop\customer_app\customer_app\obj\Debug\netcoreapp3.1\customer_app.frmCustomerManagement.resources
 C:\Users\evan\Desktop\customer_app\customer_app\obj\Debug\netcoreapp3.1\customer_app.frmAddCustomer.resources
 C:\Users\evan\Desktop\customer_app\customer_app\obj\Debug\netcoreapp3.1\customer_app.frmEditCustomer.resources
+C:\Users\evan\Desktop\customer_app\customer_app\obj\Debug\netcoreapp3.1\customer_app.frmManageAccounts.resources

@@ -22,10 +22,10 @@ namespace customer_app
             }
         }
 
-        public void CreateCustomer(string firstName, string lastName)
+        public void CreateCustomer(string firstName, string lastName, bool isBankStaff)
         {
             // add new customer to all customers list, set first and last name of customer
-            AllCustomers.Add(new Customer(firstName, lastName));
+            AllCustomers.Add(new Customer(firstName, lastName, isBankStaff));
             NotifyObservers();
         }
 
@@ -36,7 +36,7 @@ namespace customer_app
             NotifyObservers();
         }
 
-        public void EditCustomer(int iD, string newFirstName, string newLastName)
+        public void EditCustomer(int iD, string newFirstName, string newLastName, bool newIsBankStaff)
         {
             // get customer index in list by index
             int index = AllCustomers.FindIndex(c => c.ID == iD);
@@ -44,6 +44,8 @@ namespace customer_app
             AllCustomers[index].FirstName = newFirstName;
             // update with new (or same, old) last name
             AllCustomers[index].LastName = newLastName;
+            // update isBankStaff value
+            AllCustomers[index].IsBankStaff = newIsBankStaff;
 
             NotifyObservers();
         }

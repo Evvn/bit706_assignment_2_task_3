@@ -36,13 +36,14 @@ namespace customer_app
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnCancelAdd = new System.Windows.Forms.Button();
             this.lblAddCustomer = new System.Windows.Forms.Label();
+            this.checkIsBankStaff = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblLastName.Location = new System.Drawing.Point(88, 229);
+            this.lblLastName.Location = new System.Drawing.Point(88, 206);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(115, 30);
             this.lblLastName.TabIndex = 14;
@@ -63,7 +64,7 @@ namespace customer_app
             this.txtLastName.BackColor = System.Drawing.Color.GhostWhite;
             this.txtLastName.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtLastName.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.txtLastName.Location = new System.Drawing.Point(230, 226);
+            this.txtLastName.Location = new System.Drawing.Point(230, 203);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(331, 37);
             this.txtLastName.TabIndex = 12;
@@ -114,12 +115,23 @@ namespace customer_app
             this.lblAddCustomer.TabIndex = 8;
             this.lblAddCustomer.Text = "Edit customer";
             // 
+            // checkIsBankStaff
+            // 
+            this.checkIsBankStaff.AutoSize = true;
+            this.checkIsBankStaff.Location = new System.Drawing.Point(230, 266);
+            this.checkIsBankStaff.Name = "checkIsBankStaff";
+            this.checkIsBankStaff.Size = new System.Drawing.Size(188, 29);
+            this.checkIsBankStaff.TabIndex = 15;
+            this.checkIsBankStaff.Text = "Bank staff member";
+            this.checkIsBankStaff.UseVisualStyleBackColor = true;
+            // 
             // frmEditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkIsBankStaff);
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.txtLastName);
@@ -144,5 +156,6 @@ namespace customer_app
         private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnCancelAdd;
         private System.Windows.Forms.Label lblAddCustomer;
+        private System.Windows.Forms.CheckBox checkIsBankStaff;
     }
 }

@@ -16,9 +16,9 @@ namespace customer_app
         public CustomerApp()
         {
             // add test customerss
-            control.CreateCustomer("Michael", "Scott");
-            control.CreateCustomer("Pam", "Beesly");
-            control.CreateCustomer("Dwight", "Shrute");
+            control.CreateCustomer("Michael", "Scott", true);
+            control.CreateCustomer("Pam", "Beesly", false);
+            control.CreateCustomer("Dwight", "Shrute", false);
 
             InitializeComponent();
         }

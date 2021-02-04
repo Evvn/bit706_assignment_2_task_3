@@ -27,8 +27,9 @@ namespace customer_app
         {
             string fName = txtFirstName.Text;
             string lName = txtLastName.Text;
+            bool isBankStaff = checkIsBankStaff.Checked;
             // on add click
-            control.CreateCustomer(fName, lName);
+            control.CreateCustomer(fName, lName, isBankStaff);
             this.Close();
         }
     }

@@ -20,12 +20,13 @@ namespace customer_app
             // pre-populate fields
             txtFirstName.Text = cust.FirstName;
             txtLastName.Text = cust.LastName;
+            checkIsBankStaff.Checked = cust.IsBankStaff;
         }
 
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
             // on update click
-            control.EditCustomer(editedCust.ID, txtFirstName.Text, txtLastName.Text);
+            control.EditCustomer(editedCust.ID, txtFirstName.Text, txtLastName.Text, checkIsBankStaff.Checked);
             this.Close();
 
         }
