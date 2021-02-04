@@ -11,6 +11,7 @@ namespace customer_app
         private string firstName;
         private string lastName;
         private bool isBankStaff;
+        private List<Account> accounts = new List<Account>();
 
         public Customer() // default constructor
         {
@@ -33,6 +34,8 @@ namespace customer_app
         public string LastName { get => lastName; set => lastName = value; }
 
         public bool IsBankStaff { get => isBankStaff; set => isBankStaff = value; }
+
+        public List<Account> Accounts { get; set; }
 
         public override string ToString()
         {

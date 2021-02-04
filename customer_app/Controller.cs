@@ -49,5 +49,82 @@ namespace customer_app
 
             NotifyObservers();
         }
+
+        public void CreateAccount(
+            Customer cust,
+            string accountType,
+            decimal openingBalance,
+            decimal failFee,
+            decimal interestRate,
+            decimal overdraftLimit)
+        {
+            // get account type
+            if (accountType == "everyday")
+            {
+                Account newAccount = new Everyday(openingBalance);
+                AddAccountToCustomer(cust, newAccount);
+            } else if (accountType == "investment")
+            {
+                Account newAccount = new Investment(openingBalance, failFee, interestRate);
+                AddAccountToCustomer(cust, newAccount);
+            } else if (accountType == "omni")
+            {
+                Account newAccount = new Omni(openingBalance, interestRate, failFee, overdraftLimit);
+                AddAccountToCustomer(cust, newAccount);
+            }
+            
+            NotifyObservers();
+        }
+
+        public void AddAccountToCustomer(Customer cust, Account acc)
+        {
+            cust.Accounts.Add(acc);
+            NotifyObservers();
+        }
+
+        public void MakeDeposit(Account acc, decimal amount)
+        {
+            acc.Deposit(amount);
+            NotifyObservers();
+        }
+
+        public void MakeWithdrawal(Account acc, decimal amount)
+        {
+            try
+            {
+                acc.Withdraw(amount);
+                // if reaches here, withdrawal is successful
+            }
+            catch (Exception ex)
+            {
+                // do something
+                Console.WriteLine(ex.Message);
+            }
+            NotifyObservers();
+        }
+
+        public void MakeTransfer(Account accFrom, Account accTo, decimal amount)
+        {
+            // if withdrawal is successful
+            try
+            {
+                accFrom.Withdraw(amount);
+                // then deposit in to receiving account
+                accTo.Deposit(amount);
+            }
+            catch (Exception ex)
+            {
+                // do something
+                Console.WriteLine(ex.Message);
+            }
+
+            NotifyObservers();
+        }
+
+        public void AddInterest(Account acc)
+        {
+            acc.GetInterest();
+            NotifyObservers();
+        }
     }
 }
