@@ -80,6 +80,7 @@ namespace customer_app
             this.btnAddNewAccount.TabIndex = 15;
             this.btnAddNewAccount.Text = "Add new account";
             this.btnAddNewAccount.UseVisualStyleBackColor = false;
+            this.btnAddNewAccount.Click += new System.EventHandler(this.btnAddNewAccount_Click);
             // 
             // btnMakeTransfer
             // 

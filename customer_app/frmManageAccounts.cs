@@ -79,5 +79,22 @@ namespace customer_app
             string interestOutput = selectedAcc.GetInterest();
             lblCurrentBalance.Text = interestOutput;
         }
+
+        private void btnAddNewAccount_Click(object sender, EventArgs e)
+        {
+            // add new account button click
+            // if no cust selected, return error
+            if (comboCustomers.SelectedIndex == -1)
+            {
+                lblCurrentBalance.Text = "You must first select a customer to create an account for";
+                return;
+            }
+
+            Customer selectedCust = control.AllCustomers[comboCustomers.SelectedIndex];
+            // launch form here
+            frmAddAccount AddAcc = new frmAddAccount(control, selectedCust);
+            control.AttachObserver(AddAcc);
+            AddAcc.Show();
+        }
     }
 }
