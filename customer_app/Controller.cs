@@ -54,10 +54,12 @@ namespace customer_app
             Customer cust,
             string accountType,
             decimal openingBalance,
-            decimal failFee,
-            decimal interestRate,
             decimal overdraftLimit)
         {
+            // in this application, fail fee and interest rates are fixed
+            decimal failFee = 10;
+            decimal interestRate = (decimal).04;
+
             // get account type
             if (accountType == "everyday")
             {
@@ -65,7 +67,7 @@ namespace customer_app
                 AddAccountToCustomer(cust, newAccount);
             } else if (accountType == "investment")
             {
-                Account newAccount = new Investment(openingBalance, failFee, interestRate);
+                Account newAccount = new Investment(openingBalance, interestRate, failFee);
                 AddAccountToCustomer(cust, newAccount);
             } else if (accountType == "omni")
             {

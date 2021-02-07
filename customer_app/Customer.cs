@@ -35,7 +35,7 @@ namespace customer_app
 
         public bool IsBankStaff { get => isBankStaff; set => isBankStaff = value; }
 
-        public List<Account> Accounts { get; set; }
+        public List<Account> Accounts { get => accounts ; set => accounts = value; }
 
         public override string ToString()
         {
