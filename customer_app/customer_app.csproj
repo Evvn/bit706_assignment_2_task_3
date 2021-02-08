@@ -6,4 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\evan\Documents\GitHub\bit706_assignment_2_task_3\customer_app\customer_app.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>
