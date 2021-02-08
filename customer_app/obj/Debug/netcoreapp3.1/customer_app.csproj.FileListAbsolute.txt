@@ -37,3 +37,4 @@ C:\Users\evan\Documents\GitHub\bit706_assignment_2_task_3\customer_app\bin\Debug
 C:\Users\evan\Documents\GitHub\bit706_assignment_2_task_3\customer_app\bin\Debug\netcoreapp3.1\customer_app.pdb
 C:\Users\evan\Documents\GitHub\bit706_assignment_2_task_3\customer_app\obj\Debug\netcoreapp3.1\customer_app.genruntimeconfig.cache
 C:\Users\evan\Documents\GitHub\bit706_assignment_2_task_3\customer_app\obj\Debug\netcoreapp3.1\customer_app.frmAddAccount.resources
+C:\Users\evan\Documents\GitHub\bit706_assignment_2_task_3\customer_app\obj\Debug\netcoreapp3.1\customer_app.frmTransfer.resources

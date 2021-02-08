@@ -98,6 +98,7 @@ namespace customer_app
             this.btnMakeTransfer.TabIndex = 16;
             this.btnMakeTransfer.Text = "Make transfer";
             this.btnMakeTransfer.UseVisualStyleBackColor = false;
+            this.btnMakeTransfer.Click += new System.EventHandler(this.btnMakeTransfer_Click);
             // 
             // btnAddInterest
             // 
@@ -159,7 +160,7 @@ namespace customer_app
             this.btnWithdraw.BackColor = System.Drawing.Color.Navy;
             this.btnWithdraw.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnWithdraw.ForeColor = System.Drawing.Color.AliceBlue;
-            this.btnWithdraw.Location = new System.Drawing.Point(625, 218);
+            this.btnWithdraw.Location = new System.Drawing.Point(898, 220);
             this.btnWithdraw.Name = "btnWithdraw";
             this.btnWithdraw.Size = new System.Drawing.Size(250, 75);
             this.btnWithdraw.TabIndex = 22;
@@ -170,7 +171,7 @@ namespace customer_app
             // numAmount
             // 
             this.numAmount.DecimalPlaces = 2;
-            this.numAmount.Location = new System.Drawing.Point(912, 260);
+            this.numAmount.Location = new System.Drawing.Point(658, 262);
             this.numAmount.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -185,7 +186,7 @@ namespace customer_app
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAmount.Location = new System.Drawing.Point(910, 218);
+            this.lblAmount.Location = new System.Drawing.Point(656, 220);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(95, 30);
             this.lblAmount.TabIndex = 23;

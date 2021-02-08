@@ -19,5 +19,8 @@
     <Compile Update="frmManageAccounts.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

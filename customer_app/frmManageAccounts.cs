@@ -151,5 +151,22 @@ namespace customer_app
                 }
             }
         }
+
+        private void btnMakeTransfer_Click(object sender, EventArgs e)
+        {
+            // add new account button click
+            // if no cust selected, return error
+            if (comboCustomers.SelectedIndex == -1)
+            {
+                lblCurrentBalance.Text = "You must first select a customer to make a transfer for.";
+                return;
+            }
+
+            Customer selectedCust = control.AllCustomers[comboCustomers.SelectedIndex];
+            // launch form here
+            frmTransfer MakeTransfer = new frmTransfer(control, selectedCust);
+            control.AttachObserver(MakeTransfer);
+            MakeTransfer.Show();
+        }
     }
 }

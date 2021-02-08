@@ -96,7 +96,7 @@ namespace customer_app
             NotifyObservers();
         }
 
-        public void MakeTransfer(Account accFrom, Account accTo, decimal amount)
+        public string MakeTransfer(Account accFrom, Account accTo, decimal amount)
         {
             // if withdrawal is successful
             try
@@ -104,14 +104,16 @@ namespace customer_app
                 accFrom.Withdraw(amount);
                 // then deposit in to receiving account
                 accTo.Deposit(amount);
+                string output = "Transfer successful!";
+                NotifyObservers();
+                return output;
             }
             catch (Exception ex)
             {
-                // do something
-                Console.WriteLine(ex.Message);
+                string errorMessage = ex.Message;
+                NotifyObservers();
+                return errorMessage;
             }
-
-            NotifyObservers();
         }
 
         public void AddInterest(Account acc)
