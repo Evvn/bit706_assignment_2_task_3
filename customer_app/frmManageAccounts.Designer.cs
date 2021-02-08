@@ -38,6 +38,11 @@ namespace customer_app
             this.lblSelectAccount = new System.Windows.Forms.Label();
             this.comboAccounts = new System.Windows.Forms.ComboBox();
             this.lblCurrentBalance = new System.Windows.Forms.Label();
+            this.btnMakeDeposit = new System.Windows.Forms.Button();
+            this.btnWithdraw = new System.Windows.Forms.Button();
+            this.numAmount = new System.Windows.Forms.NumericUpDown();
+            this.lblAmount = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // comboCustomers
@@ -87,7 +92,7 @@ namespace customer_app
             this.btnMakeTransfer.BackColor = System.Drawing.Color.Navy;
             this.btnMakeTransfer.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMakeTransfer.ForeColor = System.Drawing.Color.AliceBlue;
-            this.btnMakeTransfer.Location = new System.Drawing.Point(352, 218);
+            this.btnMakeTransfer.Location = new System.Drawing.Point(898, 117);
             this.btnMakeTransfer.Name = "btnMakeTransfer";
             this.btnMakeTransfer.Size = new System.Drawing.Size(250, 75);
             this.btnMakeTransfer.TabIndex = 16;
@@ -99,7 +104,7 @@ namespace customer_app
             this.btnAddInterest.BackColor = System.Drawing.Color.Navy;
             this.btnAddInterest.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddInterest.ForeColor = System.Drawing.Color.AliceBlue;
-            this.btnAddInterest.Location = new System.Drawing.Point(700, 117);
+            this.btnAddInterest.Location = new System.Drawing.Point(625, 117);
             this.btnAddInterest.Name = "btnAddInterest";
             this.btnAddInterest.Size = new System.Drawing.Size(250, 75);
             this.btnAddInterest.TabIndex = 17;
@@ -130,11 +135,61 @@ namespace customer_app
             // 
             this.lblCurrentBalance.AutoSize = true;
             this.lblCurrentBalance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCurrentBalance.Location = new System.Drawing.Point(69, 335);
+            this.lblCurrentBalance.Location = new System.Drawing.Point(69, 392);
             this.lblCurrentBalance.Name = "lblCurrentBalance";
             this.lblCurrentBalance.Size = new System.Drawing.Size(171, 30);
             this.lblCurrentBalance.TabIndex = 20;
             this.lblCurrentBalance.Text = "Current balance:";
+            // 
+            // btnMakeDeposit
+            // 
+            this.btnMakeDeposit.BackColor = System.Drawing.Color.Navy;
+            this.btnMakeDeposit.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMakeDeposit.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnMakeDeposit.Location = new System.Drawing.Point(352, 218);
+            this.btnMakeDeposit.Name = "btnMakeDeposit";
+            this.btnMakeDeposit.Size = new System.Drawing.Size(250, 75);
+            this.btnMakeDeposit.TabIndex = 21;
+            this.btnMakeDeposit.Text = "Deposit";
+            this.btnMakeDeposit.UseVisualStyleBackColor = false;
+            this.btnMakeDeposit.Click += new System.EventHandler(this.btnMakeDeposit_Click);
+            // 
+            // btnWithdraw
+            // 
+            this.btnWithdraw.BackColor = System.Drawing.Color.Navy;
+            this.btnWithdraw.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnWithdraw.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnWithdraw.Location = new System.Drawing.Point(625, 218);
+            this.btnWithdraw.Name = "btnWithdraw";
+            this.btnWithdraw.Size = new System.Drawing.Size(250, 75);
+            this.btnWithdraw.TabIndex = 22;
+            this.btnWithdraw.Text = "Withdraw";
+            this.btnWithdraw.UseVisualStyleBackColor = false;
+            this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
+            // 
+            // numAmount
+            // 
+            this.numAmount.DecimalPlaces = 2;
+            this.numAmount.Location = new System.Drawing.Point(912, 260);
+            this.numAmount.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numAmount.Name = "numAmount";
+            this.numAmount.Size = new System.Drawing.Size(180, 31);
+            this.numAmount.TabIndex = 24;
+            this.numAmount.Tag = "";
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAmount.Location = new System.Drawing.Point(910, 218);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(95, 30);
+            this.lblAmount.TabIndex = 23;
+            this.lblAmount.Text = "Amount:";
             // 
             // frmManageAccounts
             // 
@@ -142,6 +197,10 @@ namespace customer_app
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1175, 450);
+            this.Controls.Add(this.numAmount);
+            this.Controls.Add(this.lblAmount);
+            this.Controls.Add(this.btnWithdraw);
+            this.Controls.Add(this.btnMakeDeposit);
             this.Controls.Add(this.lblCurrentBalance);
             this.Controls.Add(this.lblSelectAccount);
             this.Controls.Add(this.comboAccounts);
@@ -154,6 +213,7 @@ namespace customer_app
             this.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.Name = "frmManageAccounts";
             this.Text = "Current balance:";
+            ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,5 +230,9 @@ namespace customer_app
         private System.Windows.Forms.Label lblSelectAccount;
         private System.Windows.Forms.ComboBox comboAccounts;
         private System.Windows.Forms.Label lblCurrentBalance;
+        private System.Windows.Forms.Button btnMakeDeposit;
+        private System.Windows.Forms.Button btnWithdraw;
+        private System.Windows.Forms.NumericUpDown numAmount;
+        private System.Windows.Forms.Label lblAmount;
     }
 }

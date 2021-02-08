@@ -92,16 +92,7 @@ namespace customer_app
 
         public void MakeWithdrawal(Account acc, decimal amount)
         {
-            try
-            {
-                acc.Withdraw(amount);
-                // if reaches here, withdrawal is successful
-            }
-            catch (Exception ex)
-            {
-                // do something
-                Console.WriteLine(ex.Message);
-            }
+            acc.Withdraw(amount);
             NotifyObservers();
         }
 

@@ -96,5 +96,60 @@ namespace customer_app
             control.AttachObserver(AddAcc);
             AddAcc.Show();
         }
+
+        private void btnMakeDeposit_Click(object sender, EventArgs e)
+        {
+            // check that cust and acc are selected
+            if (comboCustomers.SelectedIndex == -1 || comboAccounts.SelectedIndex == -1)
+            {
+                lblCurrentBalance.Text = "Invalid selection, please pick a customer and account";
+                return;
+            }
+
+            // get selected acc
+            Customer selectedCust = control.AllCustomers[comboCustomers.SelectedIndex];
+            Account selectedAcc = selectedCust.Accounts[comboAccounts.SelectedIndex];
+
+            if (numAmount.Value <= 0)
+            {
+                lblCurrentBalance.Text = "Please deposit a positive amount > 0.";
+            } else
+            {
+                control.MakeDeposit(selectedAcc, numAmount.Value);
+                lblCurrentBalance.Text = "Current balance: $" + selectedAcc.Balance.ToString();
+            }
+        }
+
+        private void btnWithdraw_Click(object sender, EventArgs e)
+        {
+            // check that cust and acc are selected
+            if (comboCustomers.SelectedIndex == -1 || comboAccounts.SelectedIndex == -1)
+            {
+                lblCurrentBalance.Text = "Invalid selection, please pick a customer and account";
+                return;
+            }
+
+            // get selected acc
+            Customer selectedCust = control.AllCustomers[comboCustomers.SelectedIndex];
+            Account selectedAcc = selectedCust.Accounts[comboAccounts.SelectedIndex];
+
+            if (numAmount.Value <= 0)
+            {
+                lblCurrentBalance.Text = "Please withdraw a positive amount > 0.";
+            }
+            else
+            {
+                
+                try
+                {
+                    control.MakeWithdrawal(selectedAcc, numAmount.Value);
+                    // if get to here, no exception
+                    lblCurrentBalance.Text = "Current balance: $" + selectedAcc.Balance.ToString();
+                } catch (Exception exc)
+                {
+                    lblCurrentBalance.Text = exc.Message;
+                }
+            }
+        }
     }
 }
