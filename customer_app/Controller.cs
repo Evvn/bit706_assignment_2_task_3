@@ -67,12 +67,20 @@ namespace customer_app
         {
             // get customer index in list by index
             int index = AllCustomers.FindIndex(c => c.ID == iD);
+            Customer cust = AllCustomers[index];
+
             // update with new (or same, old) first name
-            AllCustomers[index].FirstName = newFirstName;
+            cust.FirstName = newFirstName;
             // update with new (or same, old) last name
-            AllCustomers[index].LastName = newLastName;
+            cust.LastName = newLastName;
             // update isBankStaff value
-            AllCustomers[index].IsBankStaff = newIsBankStaff;
+            cust.IsBankStaff = newIsBankStaff;
+
+            // update all customer accounts of new isbankstaff property
+            foreach (Account a in cust.Accounts)
+            {
+                a.IsBankStaff = newIsBankStaff;  
+            }
 
             NotifyObservers();
         }
@@ -97,18 +105,18 @@ namespace customer_app
             // get account type
             if (accountType == "everyday")
             {
-                Account newAccount = new Everyday(openingBalance);
+                Account newAccount = new Everyday(openingBalance, cust.IsBankStaff);
                 AddAccountToCustomer(cust, newAccount);
             } else if (accountType == "investment")
             {
-                Account newAccount = new Investment(openingBalance, interestRate, failFee);
+                Account newAccount = new Investment(openingBalance, interestRate, failFee, cust.IsBankStaff);
                 AddAccountToCustomer(cust, newAccount);
             } else if (accountType == "omni")
             {
-                Account newAccount = new Omni(openingBalance, interestRate, failFee, overdraftLimit);
+                Account newAccount = new Omni(openingBalance, interestRate, failFee, overdraftLimit, cust.IsBankStaff);
                 AddAccountToCustomer(cust, newAccount);
             }
-            
+
             NotifyObservers();
         }
 

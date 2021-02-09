@@ -14,6 +14,7 @@ namespace customer_app
         protected decimal interestRate;
         protected decimal failFee;
         protected decimal overdraftLimit;
+        protected bool isBankStaff;
 
         public Account()
         {
@@ -21,9 +22,10 @@ namespace customer_app
             nextAccountId++;
         }
 
-        public Account(decimal startingBalance) : this()
+        public Account(decimal startingBalance, bool setIsBankStaff) : this()
         {
             balance = startingBalance;
+            isBankStaff = setIsBankStaff;
         }
 
         public decimal Balance { get => balance; set => balance = value; }
@@ -32,8 +34,7 @@ namespace customer_app
         public decimal InterestRate { get => interestRate; set => interestRate = value; }
         public decimal FailFee { get => failFee; set => failFee = value; }
         public decimal OverdraftLimit { get => overdraftLimit; set => overdraftLimit = value; }
-
-
+        public bool IsBankStaff { get; set; }
 
         public virtual string Withdraw(decimal amount)
         {
@@ -77,7 +78,7 @@ namespace customer_app
     {
         static readonly string accountType = "Everyday";
 
-        public Everyday(decimal startingBalance) : base(startingBalance) { }
+        public Everyday(decimal startingBalance, bool setIsBankStaff) : base(startingBalance, setIsBankStaff) { }
 
         public override string Withdraw(decimal amount)
         {
@@ -112,12 +113,13 @@ namespace customer_app
     {
         static readonly string accountType = "Investment";
 
-        public Investment(decimal startingBalance) : base(startingBalance) { }
+        public Investment(decimal startingBalance, bool setIsBankStaff) : base(startingBalance, setIsBankStaff) { }
 
-        public Investment(decimal startingBalance, decimal setInterestRate, decimal setFailFee) : this(startingBalance)
+        public Investment(decimal startingBalance, decimal setInterestRate, decimal setFailFee, bool setIsBankStaff) : this(startingBalance, setIsBankStaff)
         {
             interestRate = setInterestRate;
             failFee = setFailFee;
+            isBankStaff = setIsBankStaff;
         }
 
         public override string GetInterest()
@@ -130,6 +132,12 @@ namespace customer_app
 
         public override string Withdraw(decimal amount)
         {
+            decimal setFailFee = failFee;
+            if (isBankStaff)
+            {
+                setFailFee = (failFee / 2);
+            }
+
             if (amount <= balance)
             {
                 string transactionResult = accountType + " " + accountId.ToString() + "; withdrawal $" + amount.ToString() + "; balance $" + (balance - amount).ToString();
@@ -138,8 +146,8 @@ namespace customer_app
             }
             else
             {
-                string transactionResult = accountType + " " + accountId.ToString() + "; withdrawal $" + amount.ToString() + "; transaction failed; fee " + failFee.ToString() + "; balance $" + (balance - failFee).ToString();
-                balance -= FailFee;
+                string transactionResult = accountType + " " + accountId.ToString() + "; withdrawal $" + amount.ToString() + "; transaction failed; fee " + setFailFee.ToString() + "; balance $" + (balance - failFee).ToString();
+                balance -= setFailFee;
                 throw new Exception(transactionResult);
                 // return transactionResult;
             }
@@ -154,7 +162,12 @@ namespace customer_app
 
         public override string GetInfo()
         {
-            return accountType + " " + accountId.ToString() + "; Interest rate %" + (interestRate * 100).ToString() + "; Fee $ " + failFee.ToString() + "; Balance $" + balance.ToString();
+            decimal setFailFee = failFee;
+            if (isBankStaff)
+            {
+                setFailFee = (failFee / 2);
+            }
+            return accountType + " " + accountId.ToString() + "; Interest rate %" + (interestRate * 100).ToString() + "; Fee $ " + setFailFee.ToString() + "; Balance $" + balance.ToString();
         }
 
         public override string ToString()
@@ -167,13 +180,14 @@ namespace customer_app
     {
         static readonly string accountType = "Omni";
 
-        public Omni(decimal startingBalance) : base(startingBalance) { }
+        public Omni(decimal startingBalance, bool setIsBankStaff) : base(startingBalance, setIsBankStaff) { }
 
-        public Omni(decimal startingBalance, decimal setInterestRate, decimal setFailFee, decimal setOverdraftLimit) : this(startingBalance)
+        public Omni(decimal startingBalance, decimal setInterestRate, decimal setFailFee, decimal setOverdraftLimit, bool setIsBankStaff) : this(startingBalance, setIsBankStaff)
         {
             interestRate = setInterestRate;
             failFee = setFailFee;
             overdraftLimit = setOverdraftLimit;
+            isBankStaff = setIsBankStaff;
         }
 
         public override string GetInterest()
@@ -191,6 +205,12 @@ namespace customer_app
 
         public override string Withdraw(decimal amount)
         {
+            decimal setFailFee = failFee;
+            if (isBankStaff)
+            {
+                setFailFee = (failFee / 2);
+            }
+
             if (amount <= balance + overdraftLimit)
             {
                 string transactionResult = accountType + " " + accountId.ToString() + "; withdrawal $" + amount.ToString() + "; balance $" + (balance - amount).ToString();
@@ -199,8 +219,8 @@ namespace customer_app
             }
             else
             {
-                string transactionResult = accountType + " " + accountId.ToString() + "; withdrawal $" + amount.ToString() + "; transaction failed; fee " + failFee.ToString() + "; balance $" + (balance - failFee).ToString();
-                balance -= FailFee;
+                string transactionResult = accountType + " " + accountId.ToString() + "; withdrawal $" + amount.ToString() + "; transaction failed; fee " + setFailFee.ToString() + "; balance $" + (balance - failFee).ToString();
+                balance -= setFailFee;
                 throw new Exception(transactionResult);
                 // return transactionResult;
             }
@@ -215,7 +235,12 @@ namespace customer_app
 
         public override string GetInfo()
         {
-            return accountType + " " + accountId.ToString() + "; Interest rate %" + (interestRate * 100).ToString() + "; Overdraft limit $" + overdraftLimit.ToString() + "; Fee $ " + failFee.ToString() + "; Balance $" + balance.ToString();
+            decimal setFailFee = failFee;
+            if (isBankStaff)
+            {
+                setFailFee = (failFee / 2);
+            }
+            return accountType + " " + accountId.ToString() + "; Interest rate %" + (interestRate * 100).ToString() + "; Overdraft limit $" + overdraftLimit.ToString() + "; Fee $ " + setFailFee.ToString() + "; Balance $" + balance.ToString();
         }
 
         public override string ToString()
